@@ -279,6 +279,7 @@ button[type='submit'][disabled] {
 }
 
 .pieczatka {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -286,10 +287,21 @@ button[type='submit'][disabled] {
   aspect-ratio: 1;
   border-radius: 50%;
   border: 0;
-  background: #d9d9d9; /* puste pole = szare kółko, jak szóste na karcie */
+  background: #d9d9d9; /* szare pole — zawsze widoczne pod stemplem */
+}
+
+/* ciemny stempel to osobna warstwa nad szarym polem */
+.pieczatka::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #241610;
+  opacity: 0;
 }
 
 .pieczatka svg {
+  position: relative;
   width: 62%;
   height: auto;
   color: #F7F7F5;
@@ -297,16 +309,8 @@ button[type='submit'][disabled] {
 }
 
 /* po zapisie: 5 pieczątek nabitych, jak w mockupie 29:5 */
-.karta.nabita .pieczatka:not(.pusta) {
-  background: #241610;
-}
-
+.karta.nabita .pieczatka:not(.pusta)::before { opacity: 1; }
 .karta.nabita .pieczatka:not(.pusta) svg { visibility: visible; }
-
-.karta.nabita .pieczatka.pusta {
-  background: #d9d9d9;
-  border: 0;
-}
 
 /* każda pieczątka przybita pod innym, mocnym kątem */
 .karta.nabita .p-1 { rotate: -28deg; }
@@ -322,15 +326,19 @@ button[type='submit'][disabled] {
   to   { scale: 1; opacity: 1; }
 }
 
-.karta.nabita .pieczatka:not(.pusta) { animation: nabij 0.3s backwards; }
-.karta.nabita .pieczatka.p-1 { animation-delay: 0.15s; }
-.karta.nabita .pieczatka.p-2 { animation-delay: 0.45s; }
-.karta.nabita .pieczatka.p-3 { animation-delay: 0.75s; }
-.karta.nabita .pieczatka.p-4 { animation-delay: 1.05s; }
-.karta.nabita .pieczatka.p-5 { animation-delay: 1.35s; }
+.karta.nabita .pieczatka:not(.pusta)::before,
+.karta.nabita .pieczatka:not(.pusta) svg { animation: nabij 0.3s backwards; }
+
+.karta.nabita .pieczatka.p-1::before, .karta.nabita .pieczatka.p-1 svg { animation-delay: 0.15s; }
+.karta.nabita .pieczatka.p-2::before, .karta.nabita .pieczatka.p-2 svg { animation-delay: 0.45s; }
+.karta.nabita .pieczatka.p-3::before, .karta.nabita .pieczatka.p-3 svg { animation-delay: 0.75s; }
+.karta.nabita .pieczatka.p-4::before, .karta.nabita .pieczatka.p-4 svg { animation-delay: 1.05s; }
+.karta.nabita .pieczatka.p-5::before, .karta.nabita .pieczatka.p-5 svg { animation-delay: 1.35s; }
 
 @media (prefers-reduced-motion: reduce) {
-  .karta .pieczatka { animation: none !important; }
+  .karta .pieczatka,
+  .karta .pieczatka::before,
+  .karta .pieczatka svg { animation: none !important; }
 }
 
 /* ── przyciski Wallet przygotowane przez Kamila w Figmie ────── */
@@ -363,12 +371,15 @@ button[type='submit'][disabled] {
 
 .krok {
   display: flex;
+  flex-wrap: wrap; /* przy braku miejsca elementy schodzą pod siebie w całości */
   align-items: center;
-  gap: 10px;
+  gap: 8px 10px;
   font-family: var(--grotesk); /* opis kroku: grotesk, małe litery */
   font-size: 14px;
   margin-top: 10px;
 }
+
+.krok-nr, .krok-tekst, .krok-fajka { white-space: nowrap; }
 
 .krok-nr {
   font-family: var(--mono);
