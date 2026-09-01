@@ -32,7 +32,16 @@ jak na paragonie, pole e-mail jako przerywana linia, przycisk = pomarańczowa
 elipsa bez obrysu (hover: brąz `--ink` + tekst `--krem`). Bez claimu u góry.
 Logotyp zastępuje słowo „ruch" wszędzie, także w zdaniach (inline `<use>`,
 `role="img"`, `aria-label="ruch"`). Opis marki przepisany w tonie cukier.works
-— do akceptacji klienta.
+— do akceptacji klienta (bez „demokratyzujemy", bez „kosmosu").
+
+Dodatki z sesji 1 (na polecenie Kamila, ponad limity PROMPT):
+- **Motywy kolorów** jak w wersji A (ruch-a.vercel.app): jasny / ciemny /
+  pomarańczowy, przełączane trzema elipsami nad kreską przed opisem;
+  `data-motyw` na `<html>`, zapis w localStorage, `app.js` to czyste ulepszenie
+  (bez JS elipsy są schowane). Tokeny per motyw: `--tlo --ink --znak --cta-*`.
+- **7 naklejek bocznych na desktopie** (limit „max 3" złamany świadomie) —
+  tylko przez CSS `@media (min-width: 1080px)` jako background-image, więc
+  mobile ich nie pobiera. Żadna nie nachodzi na logotyp ani kolumnę tekstu.
 
 Fonty z paczki (jedyne wagi, jakie są): **Cina Sans Medium** (nagłówki),
 **Quadrant Text Mono Regular** (etykiety, drobny druk). Oba jako woff2, preload,

@@ -21,8 +21,34 @@
   --ink:    #241610;
   --krem:   #E9E4DD;
   --orange: #EC4A24;
+  --znak:   #EC4A24; /* kolor dużego logotypu w tle */
+  --cta-tlo: #EC4A24;
+  --cta-tekst: #241610;
+  --cta-hover-tlo: #241610;
+  --cta-hover-tekst: #E9E4DD;
   --grotesk: 'Cina Sans', 'Helvetica Neue', Arial, sans-serif;
   --mono: 'Quadrant Text Mono', 'Courier New', monospace;
+}
+
+/* motywy jak w wersji A — przełączane elipsami nad opisem */
+
+:root[data-motyw='ciemny'] {
+  --tlo: #241610;
+  --ink: #F6F3EE;
+  --cta-tlo: #EC4A24;
+  --cta-tekst: #241610;
+  --cta-hover-tlo: #F6F3EE;
+  --cta-hover-tekst: #241610;
+}
+
+:root[data-motyw='pomaranczowy'] {
+  --tlo: #EC4A24;
+  --ink: #241610;
+  --znak: #241610;
+  --cta-tlo: #241610;
+  --cta-tekst: #F6F3EE;
+  --cta-hover-tlo: #F7F7F5;
+  --cta-hover-tekst: #241610;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -79,7 +105,7 @@ a { color: var(--ink); }
   display: block;
   width: 100%;
   height: auto;
-  color: var(--orange);
+  color: var(--znak);
 }
 
 /* ── przerywane kreski jak na paragonie ─────────────────────── */
@@ -133,7 +159,7 @@ input[type='email'] {
   border-radius: 0;
 }
 
-input[type='email']::placeholder { color: rgba(36, 22, 16, 0.5); }
+input[type='email']::placeholder { color: var(--ink); opacity: 0.55; }
 
 input[type='email']:focus-visible {
   outline: none;
@@ -169,8 +195,8 @@ button[type='submit'] {
   font-family: var(--mono);
   font-size: 18px;
   letter-spacing: 0.04em;
-  color: var(--ink);
-  background: var(--orange);
+  color: var(--cta-tekst);
+  background: var(--cta-tlo);
   border: 0;
   border-radius: 50%; /* elipsa jak naklejka EVERYDAY SPECIALITY */
   cursor: pointer;
@@ -178,8 +204,8 @@ button[type='submit'] {
 
 button[type='submit']:hover,
 button[type='submit']:focus-visible {
-  background: var(--ink);
-  color: var(--krem);
+  background: var(--cta-hover-tlo);
+  color: var(--cta-hover-tekst);
 }
 button[type='submit']:active { translate: 0 1px; }
 
@@ -197,6 +223,32 @@ button[type='submit']:active { translate: 0 1px; }
   vertical-align: -0.06em;
   color: currentColor;
 }
+
+/* ── elipsy zmiany koloru, nad kreską przed opisem ──────────── */
+
+.motywy { display: none; } /* bez JS nie ma czego przełączać */
+
+body.js .motywy {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.motyw {
+  width: 46px;
+  height: 26px;
+  border: 2px solid var(--ink);
+  border-radius: 50%; /* elipsa, jak przycisk */
+  cursor: pointer;
+  padding: 0;
+}
+
+.motyw[aria-pressed='true'] { outline: 3px solid var(--ink); outline-offset: 2px; }
+
+.motyw[data-motyw='jasny']        { background: #F7F7F5; }
+.motyw[data-motyw='ciemny']       { background: #241610; }
+.motyw[data-motyw='pomaranczowy'] { background: #EC4A24; }
 
 /* ── pod linią zgięcia ──────────────────────────────────────── */
 
@@ -231,3 +283,78 @@ footer a { font-size: 15px; }
 .n-standstill { right: -44px; top: -4px; width: 180px; rotate: -7deg; }
 .n-mye       { left: -40px;  top: 12px; width: 190px; rotate: 5deg; }
 .n-routine   { right: -30px; top: 40px; width: 200px; rotate: -6deg; }
+
+/* ── naklejki w bocznych pasach — tylko desktop ─────────────── */
+
+.boki { display: none; }
+
+@media (min-width: 1080px) {
+  body { position: relative; }
+
+  .boki { display: block; }
+
+  .bok {
+    position: absolute;
+    background: center / contain no-repeat;
+    pointer-events: none;
+  }
+
+  /* logotyp w tle zajmuje pas y ≈ 0–330 na szerokości kolumny ±390px —
+     boczne naklejki trzymają się poza nim */
+
+  .bok-7 { /* szara EVERYDAY SPECIALITY z bazgrołem, lewy górny róg, przycięta */
+    background-image: url('assets/naklejka-everyday-scribble.svg');
+    left: calc(50% - 640px);
+    top: 40px;
+    width: 230px; height: 166px;
+    rotate: -6deg;
+  }
+
+  .bok-1 { /* biały blob MYE, lewy pas pod logotypem */
+    background-image: url('assets/naklejka-mye-blob.svg');
+    left: calc(50% - 470px);
+    top: 370px;
+    width: 190px; height: 132px;
+    rotate: 8deg;
+  }
+
+  .bok-2 { /* beżowa Make Your RUCH COFFEE Everyday, lewy pas */
+    background-image: url('assets/naklejka-mye-coffee.svg');
+    left: calc(50% - 505px);
+    top: 700px;
+    width: 220px; height: 151px;
+    rotate: -7deg;
+  }
+
+  .bok-5 { /* biała Make Your Everyday SPECIALITY, lewy dół */
+    background-image: url('assets/naklejka-mye-spec.svg');
+    left: calc(50% - 490px);
+    top: 980px;
+    width: 200px; height: 125px;
+    rotate: 9deg;
+  }
+
+  .bok-3 { /* pomarańczowy owal EVERYDAY SPECIALITY, prawy pas */
+    background-image: url('assets/naklejka-everyday.svg');
+    left: calc(50% + 290px);
+    top: 360px;
+    width: 210px; height: 103px;
+    rotate: 6deg;
+  }
+
+  .bok-6 { /* kraftowa metka Make Your Everyday, prawy środek */
+    background-image: url('assets/naklejka-mye-krafth.svg');
+    left: calc(50% + 320px);
+    top: 620px;
+    width: 170px; height: 106px;
+    rotate: 7deg;
+  }
+
+  .bok-4 { /* biała MYE Make Your Everyday, prawy dół */
+    background-image: url('assets/naklejka-mye-stack.svg');
+    left: calc(50% + 300px);
+    top: 850px;
+    width: 225px; height: 148px;
+    rotate: -8deg;
+  }
+}
