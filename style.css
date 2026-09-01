@@ -230,21 +230,19 @@ button[type='submit']:active { translate: 0 1px; }
 
 body.js .motywy {
   display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-bottom: 10px;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
 .motyw {
-  width: 46px;
+  width: 100%;
   height: 26px;
-  border: 2px solid var(--ink);
-  border-radius: 50%; /* elipsa, jak przycisk */
+  border: 0; /* bez obrysu — aktywny motyw zlewa się z tłem */
+  border-radius: 50%; /* elipsa rozciągnięta na całą szerokość */
   cursor: pointer;
   padding: 0;
 }
-
-.motyw[aria-pressed='true'] { outline: 3px solid var(--ink); outline-offset: 2px; }
 
 .motyw[data-motyw='jasny']        { background: #F7F7F5; }
 .motyw[data-motyw='ciemny']       { background: #241610; }
@@ -275,7 +273,7 @@ footer a { font-size: 15px; }
 /* ── naklejki: pasy w przerwach, poza tekstem ───────────────── */
 
 .pas-naklejki { position: relative; }
-.pas-1 { height: 100px; margin-top: 34px; }
+.pas-1 { height: 150px; margin-top: 34px; }
 .pas-2 { height: 150px; margin-top: 16px; }
 
 .naklejka { position: absolute; }
