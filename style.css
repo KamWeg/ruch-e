@@ -293,8 +293,14 @@ button.wtorny:focus-visible {
   height: 46px;
   border-radius: 50%;
   background: var(--cta-tlo);
-  rotate: -4deg;
 }
+
+/* każda pieczątka przybita pod innym kątem */
+.p-1 { rotate: -9deg; translate: 0 1px; }
+.p-2 { rotate: 6deg;  translate: 0 -2px; }
+.p-3 { rotate: -3deg; translate: 0 2px; }
+.p-4 { rotate: 11deg; translate: 0 -1px; }
+.p-5 { rotate: -6deg; translate: 0 1px; }
 
 .pieczatka svg {
   width: 30px;
