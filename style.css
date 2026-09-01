@@ -420,17 +420,30 @@ body.js .motywy {
 footer {
   font-family: var(--mono);
   margin-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
 }
 
+.social { text-align: right; }
+
 .social-etykieta {
-  font-size: 12px;
+  font-family: var(--grotesk); /* etykiety stopki groteskiem */
+  font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
 
 footer a { font-size: 15px; }
 
-footer .prywatnosc { margin-top: 10px; }
+.adres {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 2px;
+}
+
+footer .prywatnosc { margin-top: 8px; }
 footer .prywatnosc a { font-size: 12px; }
 
 /* ── naklejki: pasy w przerwach, poza tekstem ───────────────── */

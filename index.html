@@ -5,6 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ruch — karta lojalnościowa z 5 pieczątkami na start</title>
   <meta name="description" content="Zapisz się, zanim otworzymy. Dostaniesz kartę do portfela w telefonie z 5 nabitymi pieczątkami — szósta kawa gratis.">
+  <!-- TODO: podmienić URL-e na docelową domenę, gdy będzie -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:title" content="ruch — karta lojalnościowa z 5 pieczątkami na start">
+  <meta property="og:description" content="Zapisz się, zanim otworzymy. Karta z 5 pieczątkami do portfela w telefonie — szósta kawa gratis.">
+  <meta property="og:url" content="https://ruch-e.vercel.app/">
+  <meta property="og:image" content="https://ruch-e.vercel.app/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "ruch coffee",
+    "url": "https://ruch-e.vercel.app/",
+    "image": "https://ruch-e.vercel.app/assets/og.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Marszałkowska 9/15",
+      "postalCode": "00-626",
+      "addressLocality": "Warszawa",
+      "addressCountry": "PL"
+    },
+    "sameAs": ["https://www.instagram.com/ruch.coffee/"]
+  }
+  </script>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preload" href="assets/fonts/CinaSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/QuadrantTextMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -109,10 +136,17 @@
     <hr class="kreska">
 
     <footer>
-      <p class="social-etykieta">Instagram</p>
-      <!-- handle do weryfikacji u klienta -->
-      <p><a href="https://www.instagram.com/ruch.coffee/">@ruch.coffee</a></p>
-      <p class="prywatnosc"><a href="prywatnosc.html">Polityka prywatności</a></p>
+      <div class="adresowka">
+        <p class="social-etykieta">Adres</p>
+        <!-- adres z wersji A — do potwierdzenia u klienta -->
+        <p class="adres">Marszałkowska 9/15<br>00-626 Warszawa</p>
+        <p class="prywatnosc"><a href="prywatnosc.html">Polityka prywatności</a></p>
+      </div>
+      <div class="social">
+        <p class="social-etykieta">Instagram</p>
+        <!-- handle do weryfikacji u klienta -->
+        <p><a href="https://www.instagram.com/ruch.coffee/">@ruch.coffee</a></p>
+      </div>
     </footer>
 
     <div class="pas-naklejki pas-2" aria-hidden="true">
