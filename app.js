@@ -104,6 +104,9 @@ function submitSignup(email, consent) {
       sukces.querySelector('.sukces-email').textContent = email;
       form.hidden = true;
       sukces.hidden = false;
+      // pieczątki są zamarkowane od wejścia — po zapisie odgrywamy nabijanie od nowa
+      karta.classList.remove('nabita');
+      void karta.offsetWidth;
       karta.classList.add('nabita');
       karta.scrollIntoView({ behavior: 'smooth', block: 'center' });
       sukces.querySelector('.sukces-naglowek').focus({ preventScroll: true });

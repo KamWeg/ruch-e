@@ -239,7 +239,6 @@ button[type='submit'][disabled] {
   border-radius: 20px;
   background: #EC4A24; /* karta to fizyczny obiekt — nie zmienia się z motywem */
   overflow: hidden;
-  box-shadow: 8px 8px 0 rgba(36, 22, 16, 0.9);
 }
 
 .karta-znak {
