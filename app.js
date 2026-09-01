@@ -40,6 +40,15 @@ function submitSignup(email, consent) {
     if (!badge) return;
     badge.addEventListener('click', function (zdarzenie) {
       zdarzenie.preventDefault();
+      // TODO backend: Apple — pobranie .pkpass (ta sama karta, iOS pokaże
+      // arkusz i wróci sam); Google — link zapisu w NOWEJ karcie
+      // (target=_blank), bo Google nie wraca automatycznie.
+      var fajka = document.querySelector('.krok-fajka');
+      if (fajka) fajka.hidden = false;
+      // karta w portfelu startuje pusta — pieczątki znikają,
+      // wrócą z animacją dopiero po zapisie do newslettera
+      var karta = document.getElementById('karta');
+      if (karta) karta.classList.remove('nabita');
       krok2.classList.add('otwarty');
       krok2.scrollIntoView({ behavior: 'smooth', block: 'center' });
       var pole = document.getElementById('email');
@@ -104,7 +113,7 @@ function submitSignup(email, consent) {
       sukces.querySelector('.sukces-email').textContent = email;
       form.hidden = true;
       sukces.hidden = false;
-      // pieczątki są zamarkowane od wejścia — po zapisie odgrywamy nabijanie od nowa
+      // pieczątki wracają na kartę z animacją nabijania
       karta.classList.remove('nabita');
       void karta.offsetWidth;
       karta.classList.add('nabita');

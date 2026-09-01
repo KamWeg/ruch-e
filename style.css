@@ -352,19 +352,44 @@ button[type='submit'][disabled] {
   text-decoration: none;
 }
 
-.badge img { height: 26px; width: auto; display: block; }
-
-.badge span {
-  color: #fff;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  white-space: nowrap;
-}
+.badge img { width: auto; display: block; } /* wysokość z atrybutu height */
 
 @media (min-width: 560px) {
   .wallet-badges { flex-direction: row; }
   .badge { flex: 1; }
+}
+
+/* ── etykiety kroków ────────────────────────────────────────── */
+
+.krok {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 18px;
+}
+
+.krok-nr {
+  border: 2px solid var(--ink);
+  border-radius: 50%; /* elipsa, jak reszta */
+  padding: 2px 12px;
+}
+
+.krok-fajka {
+  font-weight: 400;
+  color: var(--cta-tlo);
+}
+
+.krok-fajka:not([hidden]) {
+  display: inline-block;
+  animation: nabij 0.3s backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .krok-fajka { animation: none !important; }
 }
 
 /* ── krok 2: mail za pieczątki (odsłaniany po kliknięciu badge) ─ */

@@ -62,6 +62,9 @@
     <p class="oferta">Dodaj kartę i zapisz się do newslettera —
     <strong>5 pieczątek na start</strong>. Szósta kawa gratis.</p>
 
+    <p class="krok" id="krok-1"><span class="krok-nr">krok 1</span> dodaj kartę
+      <b class="krok-fajka" hidden>✓ w portfelu</b></p>
+
     <!-- karta wg mockupu z Figmy (29:41 / 29:5) — HTML zamiast obrazka,
          żeby pieczątki mogły się na niej nabijać -->
     <div class="karta nabita" id="karta">
@@ -81,18 +84,17 @@
          podpiąć podpisane linki od dostawcy kart (Apple: .pkpass, Google: JWT) -->
     <div class="wallet-badges">
       <a class="badge" href="#" id="badge-apple">
-        <img src="assets/badge-apple.svg" alt="" height="26">
-        <span>Add to Apple Wallet</span>
+        <img src="assets/badge-apple.svg" alt="Add to Apple Wallet" height="30">
       </a>
       <a class="badge" href="#" id="badge-google">
-        <img src="assets/badge-google.svg" alt="" height="24">
-        <span>Add to Google Wallet</span>
+        <img src="assets/badge-google.svg" alt="Add to Google Wallet" height="19">
       </a>
     </div>
 
     <!-- krok 2: mail za pieczątki — przy włączonym JS pokazuje się po kliknięciu badge -->
     <section class="krok-2">
     <hr class="kreska">
+    <p class="krok"><span class="krok-nr">krok 2</span> odbierz pieczątki</p>
     <p class="krok-2-intro">Karta w portfelu? Zostaw maila i odbierz
     <strong>5 pieczątek na start</strong>.</p>
 
