@@ -58,7 +58,11 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { color-scheme: light; }
+html {
+  color-scheme: light;
+  overflow-x: hidden; /* fallback dla starszych Safari */
+  overflow-x: clip;
+}
 
 body {
   background: var(--tlo);
@@ -66,6 +70,7 @@ body {
   font-family: var(--grotesk);
   font-weight: 500;
   line-height: 1.45;
+  overflow-x: hidden;
   overflow-x: clip;
 }
 
@@ -319,15 +324,19 @@ button[type='submit'][disabled] {
 .karta.nabita .p-4 { rotate: 32deg; }
 .karta.nabita .p-5 { rotate: -21deg; }
 
-/* nabijanie po kolei — na wyraźne życzenie Kamila (PROMPT mówił: bez animacji) */
+/* nabijanie po kolei — jak przybicie pieczątki: wpada z góry przekrzywiona,
+   dociska i lekko odbija; skala nigdy nie schodzi poniżej 1, więc szare pole
+   nie wystaje spod stempla */
 @keyframes nabij {
-  from { scale: 1.7; opacity: 0; }
-  60%  { scale: 0.9; opacity: 1; }
-  to   { scale: 1; opacity: 1; }
+  0%   { scale: 2.4; opacity: 0; rotate: 12deg; }
+  14%  { opacity: 1; }
+  55%  { scale: 1; rotate: 0deg; }
+  72%  { scale: 1.12; }
+  100% { scale: 1; rotate: 0deg; }
 }
 
 .karta.nabita .pieczatka:not(.pusta)::before,
-.karta.nabita .pieczatka:not(.pusta) svg { animation: nabij 0.3s backwards; }
+.karta.nabita .pieczatka:not(.pusta) svg { animation: nabij 0.38s cubic-bezier(0.3, 0, 0.4, 1) backwards; }
 
 .karta.nabita .pieczatka.p-1::before, .karta.nabita .pieczatka.p-1 svg { animation-delay: 0.15s; }
 .karta.nabita .pieczatka.p-2::before, .karta.nabita .pieczatka.p-2 svg { animation-delay: 0.45s; }
