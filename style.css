@@ -61,6 +61,8 @@ a { color: var(--ink); }
   gap: 16px;
   font-size: clamp(26px, 7vw, 32px);
   line-height: 1.1;
+  position: relative;
+  z-index: 1; /* (S26) nad logotypem */
 }
 
 /* ── duży logotyp w tle, wylany za krawędzie ────────────────── */
@@ -68,7 +70,7 @@ a { color: var(--ink); }
 .blob {
   width: min(114vw, 780px);
   margin-left: calc(50% - min(57vw, 390px));
-  margin-top: -4px; /* góra znaku zaraz pod (S26) */
+  margin-top: -34px; /* znak wchodzi pod (S26) */
   margin-bottom: -52px; /* kreska i nagłówek podchodzą pod znak, jak w menu */
   pointer-events: none;
 }
