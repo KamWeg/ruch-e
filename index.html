@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ruch — karta lojalnościowa z 5 pieczątkami na start</title>
+  <meta name="description" content="Zapisz się, zanim otworzymy. Dostaniesz kartę do portfela w telefonie z 5 nabitymi pieczątkami — szósta kawa gratis.">
+</head>
+<body>
+
+  <main>
+    <header>
+      <p>ruch</p><!-- w punkcie 4: logo SVG zamiast słowa -->
+      <p>make your everyday</p>
+    </header>
+
+    <h1>Zapisz się, zanim otworzymy.</h1>
+
+    <p>Dostaniesz kartę do portfela w telefonie z 5 pieczątkami już nabitymi.
+    Szósta kawa u nas — gratis.</p>
+
+    <!-- TODO backend: endpoint przyjmujący zapis, walidacja serwerowa,
+         mail z linkiem potwierdzającym (double opt-in). -->
+    <form method="post" action="/zapis">
+
+      <p>
+        <label for="email">Twój e-mail</label>
+        <input type="email" id="email" name="email" required
+               autocomplete="email" inputmode="email"
+               placeholder="imie@przyklad.pl">
+      </p>
+
+      <!-- honeypot: pole niewidoczne dla ludzi, boty je wypełniają -->
+      <p hidden aria-hidden="true">
+        <label for="www">Zostaw to pole puste</label>
+        <input type="text" id="www" name="www" tabindex="-1" autocomplete="off">
+      </p>
+
+      <p>
+        <input type="checkbox" id="zgoda" name="zgoda" required>
+        <label for="zgoda">Chcę otrzymywać na podany adres e-mail informacje
+        marketingowe od ruch [pełna nazwa i adres administratora — do uzupełnienia].
+        Zgodę mogę wycofać w każdej chwili — link do wypisu jest w każdej wiadomości.</label>
+      </p>
+
+      <button type="submit">CHCĘ KARTĘ</button>
+
+    </form>
+
+    <p><small><a href="prywatnosc.html">Polityka prywatności</a></small></p>
+
+    <section>
+      <p>ruch to nowa, codzienna sieć specialty coffee, która dopasowuje się
+      do Twojego kawowego rytuału i tempa dnia. Demokratyzujemy cenę kawy
+      specialty tak, żebyście mogli pić ją na mieście każdego dnia.</p>
+    </section>
+
+    <footer>
+      <!-- handle do weryfikacji u klienta -->
+      <a href="https://www.instagram.com/ruch.coffee/">Instagram — @ruch.coffee</a>
+    </footer>
+  </main>
+
+</body>
+</html>
