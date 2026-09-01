@@ -1,0 +1,175 @@
+/* RUCH E — „PROSTO". Tokeny z PROMPT, fonty z paczki klienta. */
+
+@font-face {
+  font-family: 'Cina Sans';
+  src: url('assets/fonts/CinaSans-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Quadrant Text Mono';
+  src: url('assets/fonts/QuadrantTextMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --cream:  #E9E4DD;
+  --paper:  #F6F3EE;
+  --ink:    #241610;
+  --orange: #EC4A24; /* tylko przycisk i naklejki */
+  --grotesk: 'Cina Sans', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'Quadrant Text Mono', 'Courier New', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { color-scheme: light; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--grotesk);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+main {
+  max-width: 520px;
+  margin-inline: auto;
+  padding: 20px 20px 48px;
+}
+
+a { color: var(--ink); }
+
+:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* ── nagłówek strony: marka + claim ─────────────────────────── */
+
+.marka {
+  font-size: 52px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.claim {
+  font-family: var(--mono);
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* ── lejek nad linią zgięcia ────────────────────────────────── */
+
+h1 {
+  font-size: clamp(30px, 8.6vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-top: 24px;
+}
+
+.oferta {
+  font-size: 17px;
+  margin-top: 12px;
+  max-width: 46ch;
+}
+
+/* ── formularz ──────────────────────────────────────────────── */
+
+form { margin-top: 20px; }
+
+.pole-email label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+
+input[type='email'] {
+  width: 100%;
+  height: 52px;
+  padding: 0 14px;
+  font-family: var(--mono);
+  font-size: 16px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 0;
+}
+
+input[type='email']::placeholder { color: rgba(36, 22, 16, 0.55); }
+
+.zgoda {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 12px;
+}
+
+.zgoda input[type='checkbox'] {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  accent-color: var(--ink);
+}
+
+.zgoda label {
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+button[type='submit'] {
+  display: block;
+  width: 100%;
+  height: 56px;
+  margin-top: 16px;
+  font-family: var(--mono);
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  background: var(--orange);
+  border: 2px solid var(--ink);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 var(--ink); /* twardy cień jak u naklejki */
+  cursor: pointer;
+}
+
+button[type='submit']:hover {
+  box-shadow: 2px 2px 0 var(--ink);
+  translate: 2px 2px;
+}
+
+button[type='submit']:active {
+  box-shadow: 0 0 0 var(--ink);
+  translate: 4px 4px;
+}
+
+.prywatnosc {
+  font-family: var(--mono);
+  font-size: 12px;
+  margin-top: 14px;
+}
+
+/* ── pod linią zgięcia ──────────────────────────────────────── */
+
+.o-marce {
+  margin-top: 96px;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+footer {
+  margin-top: 28px;
+  font-family: var(--mono);
+  font-size: 13px;
+}

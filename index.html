@@ -5,25 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ruch — karta lojalnościowa z 5 pieczątkami na start</title>
   <meta name="description" content="Zapisz się, zanim otworzymy. Dostaniesz kartę do portfela w telefonie z 5 nabitymi pieczątkami — szósta kawa gratis.">
+  <link rel="preload" href="assets/fonts/CinaSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/QuadrantTextMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <main>
     <header>
-      <p>ruch</p><!-- w punkcie 4: logo SVG zamiast słowa -->
-      <p>make your everyday</p>
+      <p class="marka">ruch</p><!-- w punkcie 4: logo SVG zamiast słowa -->
+      <p class="claim">make your everyday</p>
     </header>
 
     <h1>Zapisz się, zanim otworzymy.</h1>
 
-    <p>Dostaniesz kartę do portfela w telefonie z 5 pieczątkami już nabitymi.
+    <p class="oferta">Dostaniesz kartę do portfela w telefonie z 5 pieczątkami już nabitymi.
     Szósta kawa u nas — gratis.</p>
 
     <!-- TODO backend: endpoint przyjmujący zapis, walidacja serwerowa,
          mail z linkiem potwierdzającym (double opt-in). -->
     <form method="post" action="/zapis">
 
-      <p>
+      <p class="pole-email">
         <label for="email">Twój e-mail</label>
         <input type="email" id="email" name="email" required
                autocomplete="email" inputmode="email"
@@ -36,7 +39,7 @@
         <input type="text" id="www" name="www" tabindex="-1" autocomplete="off">
       </p>
 
-      <p>
+      <p class="zgoda">
         <input type="checkbox" id="zgoda" name="zgoda" required>
         <label for="zgoda">Chcę otrzymywać na podany adres e-mail informacje
         marketingowe od ruch [pełna nazwa i adres administratora — do uzupełnienia].
@@ -47,9 +50,9 @@
 
     </form>
 
-    <p><small><a href="prywatnosc.html">Polityka prywatności</a></small></p>
+    <p class="prywatnosc"><a href="prywatnosc.html">Polityka prywatności</a></p>
 
-    <section>
+    <section class="o-marce">
       <p>ruch to nowa, codzienna sieć specialty coffee, która dopasowuje się
       do Twojego kawowego rytuału i tempa dnia. Demokratyzujemy cenę kawy
       specialty tak, żebyście mogli pić ją na mieście każdego dnia.</p>
