@@ -285,8 +285,8 @@ button[type='submit'][disabled] {
   width: 13%;
   aspect-ratio: 1;
   border-radius: 50%;
-  border: 2px dashed rgba(36, 22, 16, 0.45); /* przed nabiciem: puste kółka */
-  background: transparent;
+  border: 0;
+  background: #d9d9d9; /* puste pole = szare kółko, jak szóste na karcie */
 }
 
 .pieczatka svg {
@@ -296,12 +296,9 @@ button[type='submit'][disabled] {
   visibility: hidden; /* bazgroł pojawia się dopiero po nabiciu */
 }
 
-.pieczatka.pusta { border-style: dashed; }
-
 /* po zapisie: 5 pieczątek nabitych, jak w mockupie 29:5 */
 .karta.nabita .pieczatka:not(.pusta) {
   background: #241610;
-  border: 0;
 }
 
 .karta.nabita .pieczatka:not(.pusta) svg { visibility: visible; }
