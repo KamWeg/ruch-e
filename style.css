@@ -344,13 +344,23 @@ button[type='submit'][disabled] {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 12px;
   width: 100%;
   height: 56px;
-  background: #000; /* czarny pas zlewa się z tłem badge'a */
-  border-radius: 12px;
+  background: #000;
+  border-radius: 14px;
+  text-decoration: none;
 }
 
-.badge img { height: 46px; width: auto; display: block; }
+.badge img { height: 26px; width: auto; display: block; }
+
+.badge span {
+  color: #fff;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+}
 
 @media (min-width: 560px) {
   .wallet-badges { flex-direction: row; }
