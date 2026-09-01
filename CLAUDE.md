@@ -17,14 +17,22 @@ pieczątkami do portfela w telefonie.** Metryka: liczba kart w portfelach. Nic i
 3. Marka wchodzi przez materiały (logo, naklejki, fonty, kolory), nie przez efekty.
    Zero animacji, parallaksy, loadera, 3D, dźwięku.
 
-## Tokeny
+## Tokeny i art direction (decyzje Kamila z sesji 1)
 
 ```
---cream  #E9E4DD   tło
---paper  #F6F3EE
+--tlo    #F7F7F5   tło (jak papier menu — decyzja Kamila, zamiast #E9E4DD)
 --ink    #241610   tekst
---orange #EC4A24   TYLKO przycisk i naklejki
+--krem   #E9E4DD   tekst na hoverze przycisku
+--orange #EC4A24   przycisk, naklejki ORAZ duży logotyp w tle (decyzja Kamila)
 ```
+
+Styl wg **menu (S26)** z Figmy: pasek „Ruch Coffee" + „(S26)", pod nim duży
+pomarańczowy logotyp wylany za krawędzie (top pod „(S26)"), przerywane kreski
+jak na paragonie, pole e-mail jako przerywana linia, przycisk = pomarańczowa
+elipsa bez obrysu (hover: brąz `--ink` + tekst `--krem`). Bez claimu u góry.
+Logotyp zastępuje słowo „ruch" wszędzie, także w zdaniach (inline `<use>`,
+`role="img"`, `aria-label="ruch"`). Opis marki przepisany w tonie cukier.works
+— do akceptacji klienta.
 
 Fonty z paczki (jedyne wagi, jakie są): **Cina Sans Medium** (nagłówki),
 **Quadrant Text Mono Regular** (etykiety, drobny druk). Oba jako woff2, preload,

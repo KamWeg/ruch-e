@@ -1,4 +1,4 @@
-/* RUCH E — „PROSTO". Tokeny z PROMPT, fonty z paczki klienta. */
+/* RUCH E — „PROSTO", art direction wg menu (S26). Fonty z paczki klienta. */
 
 @font-face {
   font-family: 'Cina Sans';
@@ -17,10 +17,10 @@
 }
 
 :root {
-  --cream:  #E9E4DD;
-  --paper:  #F6F3EE;
+  --tlo:    #F7F7F5; /* decyzja Kamila: tło jak papier menu */
   --ink:    #241610;
-  --orange: #EC4A24; /* tylko przycisk i naklejki */
+  --krem:   #E9E4DD;
+  --orange: #EC4A24;
   --grotesk: 'Cina Sans', 'Helvetica Neue', Arial, sans-serif;
   --mono: 'Quadrant Text Mono', 'Courier New', monospace;
 }
@@ -30,17 +30,18 @@
 html { color-scheme: light; }
 
 body {
-  background: var(--cream);
+  background: var(--tlo);
   color: var(--ink);
   font-family: var(--grotesk);
   font-weight: 500;
   line-height: 1.45;
+  overflow-x: clip;
 }
 
 main {
   max-width: 520px;
   margin-inline: auto;
-  padding: 20px 20px 48px;
+  padding: 16px 20px 40px;
 }
 
 a { color: var(--ink); }
@@ -50,38 +51,63 @@ a { color: var(--ink); }
   outline-offset: 2px;
 }
 
-/* ── nagłówek strony: marka + claim ─────────────────────────── */
+[hidden] { display: none !important; }
 
-.marka {
-  font-size: 52px;
-  line-height: 1;
-  letter-spacing: -0.02em;
+/* ── pasek tytułowy jak w menu ──────────────────────────────── */
+
+.pasek {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: clamp(26px, 7vw, 32px);
+  line-height: 1.1;
 }
 
-.claim {
-  font-family: var(--mono);
-  font-size: 13px;
-  margin-top: 4px;
+/* ── duży logotyp w tle, wylany za krawędzie ────────────────── */
+
+.blob {
+  width: min(114vw, 780px);
+  margin-left: calc(50% - min(57vw, 390px));
+  margin-top: -4px; /* góra znaku zaraz pod (S26) */
+  margin-bottom: -52px; /* kreska i nagłówek podchodzą pod znak, jak w menu */
+  pointer-events: none;
 }
 
-/* ── lejek nad linią zgięcia ────────────────────────────────── */
+.blob svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: var(--orange);
+}
+
+/* ── przerywane kreski jak na paragonie ─────────────────────── */
+
+.kreska {
+  border: 0;
+  border-top: 2px dashed var(--ink);
+  margin: 14px 0;
+}
+
+/* ── lejek ──────────────────────────────────────────────────── */
 
 h1 {
-  font-size: clamp(30px, 8.6vw, 42px);
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  margin-top: 24px;
+  text-transform: uppercase;
+  font-size: clamp(20px, 5.8vw, 26px);
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  margin-top: 6px;
 }
 
 .oferta {
-  font-size: 17px;
-  margin-top: 12px;
-  max-width: 46ch;
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.5;
+  margin-top: 10px;
 }
 
 /* ── formularz ──────────────────────────────────────────────── */
 
-form { margin-top: 20px; }
+form { margin-top: 14px; }
 
 .pole-email label {
   display: block;
@@ -89,22 +115,28 @@ form { margin-top: 20px; }
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  margin-bottom: 6px;
+  margin-bottom: 2px;
 }
 
 input[type='email'] {
   width: 100%;
-  height: 52px;
-  padding: 0 14px;
+  height: 48px;
+  padding: 0 2px;
   font-family: var(--mono);
   font-size: 16px;
   color: var(--ink);
-  background: var(--paper);
-  border: 2px solid var(--ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 2px dashed var(--ink);
   border-radius: 0;
 }
 
-input[type='email']::placeholder { color: rgba(36, 22, 16, 0.55); }
+input[type='email']::placeholder { color: rgba(36, 22, 16, 0.5); }
+
+input[type='email']:focus-visible {
+  outline: none;
+  border-bottom: 3px solid var(--ink);
+}
 
 .zgoda {
   display: flex;
@@ -130,46 +162,70 @@ input[type='email']::placeholder { color: rgba(36, 22, 16, 0.55); }
 button[type='submit'] {
   display: block;
   width: 100%;
-  height: 56px;
-  margin-top: 16px;
+  height: 58px;
+  margin-top: 14px;
   font-family: var(--mono);
   font-size: 18px;
   letter-spacing: 0.04em;
   color: var(--ink);
   background: var(--orange);
-  border: 2px solid var(--ink);
-  border-radius: 0;
-  box-shadow: 4px 4px 0 var(--ink); /* twardy cień jak u naklejki */
+  border: 0;
+  border-radius: 50%; /* elipsa jak naklejka EVERYDAY SPECIALITY */
   cursor: pointer;
 }
 
-button[type='submit']:hover {
-  box-shadow: 2px 2px 0 var(--ink);
-  translate: 2px 2px;
+button[type='submit']:hover,
+button[type='submit']:focus-visible {
+  background: var(--ink);
+  color: var(--krem);
 }
-
-button[type='submit']:active {
-  box-shadow: 0 0 0 var(--ink);
-  translate: 4px 4px;
-}
+button[type='submit']:active { translate: 0 1px; }
 
 .prywatnosc {
   font-family: var(--mono);
   font-size: 12px;
-  margin-top: 14px;
+  margin-top: 12px;
+}
+
+/* ── logo w miejscu słowa „ruch" w tekście ──────────────────── */
+
+.logo-inline {
+  height: 0.92em;
+  width: 2.4em;
+  vertical-align: -0.06em;
+  color: currentColor;
 }
 
 /* ── pod linią zgięcia ──────────────────────────────────────── */
 
 .o-marce {
-  margin-top: 96px;
   font-family: var(--mono);
   font-size: 13px;
   line-height: 1.6;
+  margin: 20px 0;
 }
 
 footer {
-  margin-top: 28px;
   font-family: var(--mono);
-  font-size: 13px;
+  margin-top: 18px;
 }
+
+.social-etykieta {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+footer a { font-size: 15px; }
+
+/* ── naklejki: pasy w przerwach, poza tekstem ───────────────── */
+
+.pas-naklejki { position: relative; }
+.pas-1 { height: 100px; margin-top: 34px; }
+.pas-2 { height: 150px; margin-top: 16px; }
+
+.naklejka { position: absolute; }
+
+.n-standstill { right: -44px; top: -4px; width: 180px; rotate: -7deg; }
+.n-mye       { left: -40px;  top: 12px; width: 190px; rotate: 5deg; }
+.n-routine   { right: -30px; top: 40px; width: 200px; rotate: -6deg; }
