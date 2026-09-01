@@ -373,9 +373,10 @@ button[type='submit'][disabled] {
 }
 
 .krok-nr {
-  border: 2px solid var(--ink);
+  background: var(--orange);
+  color: #F7F7F5;
   border-radius: 50%; /* elipsa, jak reszta */
-  padding: 2px 12px;
+  padding: 4px 14px;
 }
 
 .krok-fajka {
