@@ -306,12 +306,12 @@ button[type='submit'][disabled] {
   border: 0;
 }
 
-/* każda pieczątka przybita pod innym kątem */
-.karta.nabita .p-1 { rotate: -9deg; }
-.karta.nabita .p-2 { rotate: 6deg; }
-.karta.nabita .p-3 { rotate: -3deg; }
-.karta.nabita .p-4 { rotate: 11deg; }
-.karta.nabita .p-5 { rotate: -6deg; }
+/* każda pieczątka przybita pod innym, mocnym kątem */
+.karta.nabita .p-1 { rotate: -28deg; }
+.karta.nabita .p-2 { rotate: 19deg; }
+.karta.nabita .p-3 { rotate: -14deg; }
+.karta.nabita .p-4 { rotate: 32deg; }
+.karta.nabita .p-5 { rotate: -21deg; }
 
 /* nabijanie po kolei — na wyraźne życzenie Kamila (PROMPT mówił: bez animacji) */
 @keyframes nabij {
