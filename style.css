@@ -51,6 +51,11 @@
   --cta-hover-tekst: #241610;
 }
 
+/* pomarańczowy motyw: kroki i karta w odwróconych kolorach */
+:root[data-motyw='pomaranczowy'] .krok-nr { background: #F7F7F5; color: #EC4A24; }
+:root[data-motyw='pomaranczowy'] .karta { background: #E9E4DD; }
+:root[data-motyw='pomaranczowy'] .karta .karta-znak { color: #EC4A24; }
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html { color-scheme: light; }
@@ -97,7 +102,7 @@ a { color: var(--ink); }
   width: min(114vw, 780px);
   margin-left: calc(50% - min(57vw, 390px));
   margin-top: -34px; /* znak wchodzi pod (S26) */
-  margin-bottom: -52px; /* kreska i nagłówek podchodzą pod znak, jak w menu */
+  margin-bottom: -60px; /* kreska i nagłówek podchodzą pod znak, jak w menu */
   pointer-events: none;
 }
 
@@ -235,7 +240,7 @@ button[type='submit'][disabled] {
 .karta {
   position: relative;
   aspect-ratio: 8 / 5;
-  margin-top: 18px;
+  margin-top: 12px;
   border-radius: 20px;
   background: #EC4A24; /* karta to fizyczny obiekt — nie zmienia się z motywem */
   overflow: hidden;
@@ -337,7 +342,7 @@ button[type='submit'][disabled] {
   display: flex;
   flex-direction: column; /* mobile: pod sobą, na szerokość karty */
   gap: 10px;
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 .badge {
@@ -357,6 +362,7 @@ button[type='submit'][disabled] {
 @media (min-width: 560px) {
   .wallet-badges { flex-direction: row; }
   .badge { flex: 1; }
+  .badge img { height: 30px; } /* wersje dwuliniowe mają wspólną wysokość */
 }
 
 /* ── etykiety kroków ────────────────────────────────────────── */
@@ -365,14 +371,16 @@ button[type='submit'][disabled] {
   display: flex;
   align-items: center;
   gap: 10px;
+  font-family: var(--grotesk); /* opis kroku: grotesk, małe litery */
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.krok-nr {
   font-family: var(--mono);
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  margin-top: 18px;
-}
-
-.krok-nr {
   background: var(--orange);
   color: #F7F7F5;
   border-radius: 50%; /* elipsa, jak reszta */

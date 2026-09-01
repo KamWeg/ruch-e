@@ -62,7 +62,7 @@
     <p class="oferta">Dodaj kartę i zapisz się do newslettera —
     <strong>5 pieczątek na start</strong>. Szósta kawa gratis.</p>
 
-    <p class="krok" id="krok-1"><span class="krok-nr">krok 1</span> dodaj kartę
+    <p class="krok" id="krok-1"><span class="krok-nr">krok 1</span> dodaj kartę do telefonu
       <b class="krok-fajka" hidden>✓ w portfelu</b></p>
 
     <!-- karta wg mockupu z Figmy (29:41 / 29:5) — HTML zamiast obrazka,
@@ -84,10 +84,16 @@
          podpiąć podpisane linki od dostawcy kart (Apple: .pkpass, Google: JWT) -->
     <div class="wallet-badges">
       <a class="badge" href="#" id="badge-apple">
-        <img src="assets/badge-apple.svg" alt="Add to Apple Wallet" height="30">
+        <picture>
+          <source media="(min-width: 560px)" srcset="assets/badge-apple-2l.svg">
+          <img src="assets/badge-apple.svg" alt="Add to Apple Wallet" height="30">
+        </picture>
       </a>
       <a class="badge" href="#" id="badge-google">
-        <img src="assets/badge-google.svg" alt="Add to Google Wallet" height="19">
+        <picture>
+          <source media="(min-width: 560px)" srcset="assets/badge-google-2l.svg">
+          <img src="assets/badge-google.svg" alt="Add to Google Wallet" height="18">
+        </picture>
       </a>
     </div>
 
