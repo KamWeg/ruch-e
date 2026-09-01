@@ -47,15 +47,22 @@ Fonty z paczki (jedyne wagi, jakie są): **Cina Sans Medium** (nagłówki),
 **Quadrant Text Mono Regular** (etykiety, drobny druk). Oba jako woff2, preload,
 `font-display: swap`. Bez trzeciego kroju, bez fontów systemowych/Google.
 
-## Obie ścieżki
+## Lejek (przeprojektowany przez Kamila w sesji 1 — ODWRÓCONY względem BRIEF!)
 
-1. **Zapis** (`index.html`): logo → nagłówek → zdanie oferty → formularz
-   (e-mail + niezaznaczony checkbox zgody + przycisk CHCĘ KARTĘ) → link do polityki.
-   Po sukcesie formularz podmienia się na „sprawdź skrzynkę i potwierdź adres".
-   **Bez przycisków Wallet na tym ekranie.** Punkty logo–polityka mieszczą się
-   na 375×667 bez scrollowania.
-2. **Potwierdzenie** (`potwierdzenie.html`): lądowanie z linku w mailu (double opt-in),
-   dwa przyciski: Apple Wallet i Google Wallet. Kartę wydajemy dopiero tutaj.
+1. **Karta od ręki** (`index.html`): nagłówek „Dodaj kartę do portfela" → info
+   o 5 pieczątkach za newsletter → **mockup karty** (HTML wg węzłów Figmy
+   `29:41`/`29:5`: pomarańcz, biały logotyp, podpis „loyalty card", 6 pustych
+   kółek) → badge „Add to Apple Wallet / Google Wallet" (atrapy oficjalnych,
+   TODO dostawca kart).
+2. **Krok 2 — mail za pieczątki**: po kliknięciu badge odsłania się formularz
+   (e-mail + zgoda wymagana; pieczątki SĄ nagrodą za newsletter). Po zapisie
+   **5 pieczątek nabija się animacją na karcie** (bazgroł-favicon w ciemnych
+   kołach, różne kąty, szóste kółko szare), komunikat o double opt-in.
+3. **Potwierdzenie** (`potwierdzenie.html`): landing z maila — karta 5/6,
+   „pieczątki nabite na stałe", fallback z badge'ami Wallet.
+
+Uzasadnienie odwrócenia: metryka = karty w portfelach; pieczątki dalej
+bramkowane potwierdzonym mailem, więc anty-abuse z BRIEF zostaje.
 
 Backend (wysyłka maila, wydanie karty, walidacja serwerowa) NIE istnieje w tej wersji —
 wszystko przez jedną funkcję `submitSignup(email, consent)` z wyraźnym `TODO`.

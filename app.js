@@ -31,6 +31,23 @@ function submitSignup(email, consent) {
   });
 }
 
+// ── Badge portfeli: odsłaniają krok 2 (mail za pieczątki) ───────
+// TODO backend: tu ma się dziać prawdziwe dodanie karty (pkpass / JWT).
+(function () {
+  var krok2 = document.querySelector('.krok-2');
+  ['badge-apple', 'badge-google'].forEach(function (id) {
+    var badge = document.getElementById(id);
+    if (!badge) return;
+    badge.addEventListener('click', function (zdarzenie) {
+      zdarzenie.preventDefault();
+      krok2.classList.add('otwarty');
+      krok2.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      var pole = document.getElementById('email');
+      if (pole) pole.focus({ preventScroll: true });
+    });
+  });
+})();
+
 // ── Stany formularza: spoczynek / wysyłanie / sukces / błąd ─────
 (function () {
   var form = document.querySelector('form');
@@ -39,17 +56,13 @@ function submitSignup(email, consent) {
   var pole = form.querySelector('#email');
   var zgoda = form.querySelector('#zgoda');
   var pulapka = form.querySelector('#www');
-  var przycisk = form.querySelector('button[type=submit]:not(.wtorny)');
-  var wtorny = form.querySelector('button.wtorny');
+  var przycisk = form.querySelector('button[type=submit]');
   var blad = form.querySelector('#blad-formularza');
   var sukces = document.querySelector('.sukces');
-  var tryb = 'newsletter'; // który przycisk kliknięto
+  var karta = document.getElementById('karta');
 
   // z JS-em walidację i komunikaty przejmujemy my (po polsku)
   form.setAttribute('novalidate', '');
-
-  wtorny.addEventListener('click', function () { tryb = 'bez-newslettera'; });
-  przycisk.addEventListener('click', function () { tryb = 'newsletter'; });
 
   function pokazBlad(tekst) {
     blad.textContent = tekst;
@@ -68,7 +81,6 @@ function submitSignup(email, consent) {
     // honeypot: człowiek go nie widzi, bot wypełnia — udajemy sukces bez wysyłki
     if (pulapka && pulapka.value) { return; }
 
-    var zNewsletterem = tryb === 'newsletter';
     var email = pole.value.trim();
     if (!email || pole.validity.typeMismatch || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
       pokazBlad('Ten adres wygląda na niepoprawny — sprawdź literówki.');
@@ -76,35 +88,30 @@ function submitSignup(email, consent) {
       pole.focus();
       return;
     }
-    if (zNewsletterem && !zgoda.checked) {
-      pokazBlad('Bez zgody nie możemy wysłać newslettera — zaznacz pole powyżej albo wybierz kartę bez pieczątek.');
+    if (!zgoda.checked) {
+      pokazBlad('Pieczątki dostajesz za zapis do newslettera — zaznacz zgodę powyżej.');
       zgoda.focus();
       return;
     }
 
     // wysyłanie
     przycisk.disabled = true;
-    wtorny.disabled = true;
     przycisk.textContent = 'WYSYŁAM…';
     form.setAttribute('aria-busy', 'true');
 
-    submitSignup(email, zNewsletterem).then(function () {
-      // sukces: formularz znika, wjeżdża karta — z pieczątkami albo czysta
+    submitSignup(email, true).then(function () {
+      // sukces: pieczątki nabijają się na karcie u góry
       sukces.querySelector('.sukces-email').textContent = email;
-      sukces.classList.toggle('bez-pieczatek', !zNewsletterem);
-      sukces.querySelector('.licznik-nabite').textContent = zNewsletterem ? '5' : '0';
-      sukces.querySelector('.pieczatki').setAttribute('aria-label', zNewsletterem
-        ? '5 z 6 pieczątek już nabitych, szósta kawa gratis'
-        : 'Czysta karta: 0 z 6 pieczątek, szósta kawa gratis');
       form.hidden = true;
       sukces.hidden = false;
-      sukces.querySelector('.sukces-naglowek').focus();
+      karta.classList.add('nabita');
+      karta.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      sukces.querySelector('.sukces-naglowek').focus({ preventScroll: true });
     }).catch(function () {
       pokazBlad('Nie udało się wysłać. Spróbuj jeszcze raz za chwilę.');
     }).finally(function () {
       przycisk.disabled = false;
-      wtorny.disabled = false;
-      przycisk.textContent = 'CHCĘ KARTĘ';
+      przycisk.textContent = 'CHCĘ PIECZĄTKI';
       form.removeAttribute('aria-busy');
     });
   });
