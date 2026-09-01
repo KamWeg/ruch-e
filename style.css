@@ -524,6 +524,7 @@ footer .prywatnosc a { font-size: 12px; }
 .naklejka { position: absolute; }
 
 .n-standstill { right: -44px; top: -4px; width: 180px; rotate: -7deg; }
+.n-krafth    { left: -36px; top: 26px; width: 170px; rotate: 6deg; }
 .n-mye       { left: -40px;  top: 12px; width: 190px; rotate: 5deg; }
 .n-routine   { right: -30px; top: 40px; width: 200px; rotate: -6deg; }
 
