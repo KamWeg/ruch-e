@@ -230,13 +230,12 @@ button[type='submit']:active { translate: 0 1px; }
 
 body.js .motywy {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   margin-bottom: 12px;
 }
 
 .motyw {
-  width: 100%;
+  flex: 1; /* trzy elipsy w jednym rzędzie, każda rozciągnięta */
   height: 26px;
   border: 0; /* bez obrysu — aktywny motyw zlewa się z tłem */
   border-radius: 50%; /* elipsa rozciągnięta na całą szerokość */
