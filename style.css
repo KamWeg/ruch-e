@@ -336,33 +336,26 @@ button[type='submit'][disabled] {
   .karta .pieczatka { animation: none !important; }
 }
 
-/* ── oficjalne badge portfeli (PL) ──────────────────────────── */
+/* ── przyciski Wallet przygotowane przez Kamila w Figmie ────── */
+/* pliki mają własne tło (#1A1614) i zaokrąglenia — bez dorabiania */
 
 .wallet-badges {
   display: flex;
-  flex-direction: column; /* mobile: pod sobą, na szerokość karty */
+  flex-direction: column; /* mobile: szerokie, pod sobą, na szerokość karty */
   gap: 10px;
   margin-top: 12px;
 }
 
-.badge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  width: 100%;
-  height: 56px;
-  background: #000;
-  border-radius: 14px;
-  text-decoration: none;
-}
+.badge { display: block; }
 
-.badge img { width: auto; display: block; } /* wysokość z atrybutu height */
+.badge picture { display: block; }
+
+.badge img { width: 100%; height: auto; display: block; }
 
 @media (min-width: 560px) {
-  .wallet-badges { flex-direction: row; }
-  .badge { flex: 1; }
-  .badge img { height: 30px; } /* wersje dwuliniowe mają wspólną wysokość */
+  .wallet-badges { flex-direction: row; justify-content: center; }
+  .badge { flex: 0 0 auto; }
+  .badge img { width: auto; height: 48px; } /* desktop: wąskie, naturalny rozmiar */
 }
 
 /* ── etykiety kroków ────────────────────────────────────────── */
