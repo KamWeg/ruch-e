@@ -350,9 +350,8 @@ button[type='submit'][disabled] {
 .badge img { width: 100%; height: auto; display: block; }
 
 @media (min-width: 560px) {
-  .wallet-badges { flex-direction: row; justify-content: center; }
-  .badge { flex: 0 0 auto; }
-  .badge img { width: auto; height: 48px; } /* desktop: wąskie, naturalny rozmiar */
+  .wallet-badges { flex-direction: row; }
+  .badge { flex: 1; } /* dwa wąskie razem wypełniają szerokość karty */
 }
 
 /* ── etykiety kroków ────────────────────────────────────────── */
