@@ -113,11 +113,12 @@ function submitSignup(email, consent) {
       sukces.querySelector('.sukces-email').textContent = email;
       form.hidden = true;
       sukces.hidden = false;
-      // pieczątki wracają na kartę z animacją nabijania
+      // pieczątki wracają z animacją — ale dopiero gdy karta dojedzie na ekran,
+      // inaczej nabijanie odgrywa się poza kadrem podczas scrolla
       karta.classList.remove('nabita');
       void karta.offsetWidth;
-      karta.classList.add('nabita');
       karta.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(function () { karta.classList.add('nabita'); }, 650);
       sukces.querySelector('.sukces-naglowek').focus({ preventScroll: true });
     }).catch(function () {
       pokazBlad('Nie udało się wysłać. Spróbuj jeszcze raz za chwilę.');

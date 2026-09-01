@@ -323,11 +323,11 @@ button[type='submit'][disabled] {
 }
 
 .karta.nabita .pieczatka:not(.pusta) { animation: nabij 0.3s backwards; }
-.karta.nabita .p-1 { animation-delay: 0.15s; }
-.karta.nabita .p-2 { animation-delay: 0.45s; }
-.karta.nabita .p-3 { animation-delay: 0.75s; }
-.karta.nabita .p-4 { animation-delay: 1.05s; }
-.karta.nabita .p-5 { animation-delay: 1.35s; }
+.karta.nabita .pieczatka.p-1 { animation-delay: 0.15s; }
+.karta.nabita .pieczatka.p-2 { animation-delay: 0.45s; }
+.karta.nabita .pieczatka.p-3 { animation-delay: 0.75s; }
+.karta.nabita .pieczatka.p-4 { animation-delay: 1.05s; }
+.karta.nabita .pieczatka.p-5 { animation-delay: 1.35s; }
 
 @media (prefers-reduced-motion: reduce) {
   .karta .pieczatka { animation: none !important; }
