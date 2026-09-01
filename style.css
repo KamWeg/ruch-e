@@ -356,7 +356,7 @@ button[type='submit'][disabled] {
 
 .badge-txt { display: flex; flex-direction: column; line-height: 1.15; text-align: left; }
 .badge-txt small { font-size: 10px; font-weight: 400; font-family: 'Helvetica Neue', Arial, sans-serif; }
-.badge-txt strong { font-size: 15px; font-weight: 600; font-family: 'Helvetica Neue', Arial, sans-serif; }
+.badge-txt strong { font-size: 15px; font-weight: 400; font-family: 'Helvetica Neue', Arial, sans-serif; }
 
 /* ── krok 2: mail za pieczątki (odsłaniany po kliknięciu badge) ─ */
 
