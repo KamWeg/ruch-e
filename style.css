@@ -194,8 +194,8 @@ input[type='email']:focus-visible {
 }
 
 .zgoda label {
-  font-family: var(--mono);
-  font-size: 12px;
+  font-family: var(--grotesk);
+  font-size: 11px;
   line-height: 1.5;
 }
 
