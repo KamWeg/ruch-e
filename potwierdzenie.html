@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ruch — karta lojalnościowa z 5 pieczątkami na start</title>
-  <meta name="description" content="Zapisz się, zanim otworzymy. Dostaniesz kartę do portfela w telefonie z 5 nabitymi pieczątkami — szósta kawa gratis.">
+  <title>Karta gotowa — dodaj do portfela · ruch</title>
+  <meta name="description" content="Adres potwierdzony. Dodaj kartę lojalnościową ruch do Apple Wallet albo Google Wallet.">
+  <meta name="robots" content="noindex"><!-- strona docelowa z maila, nie do indeksowania -->
   <link rel="preload" href="assets/fonts/CinaSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/QuadrantTextMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
@@ -20,55 +21,13 @@
       <p class="pasek-kod">(S26)</p>
     </header>
 
-    <div class="blob" aria-hidden="true">
-      <svg viewBox="0 0 1080 413"><use href="#znak-ruch"/></svg>
-    </div>
-
     <hr class="kreska">
 
-    <h1>Zapisz się, zanim otworzymy.</h1>
-
-    <p class="oferta">Dostaniesz kartę do portfela w telefonie z 5 pieczątkami już nabitymi.
-    Szósta kawa u nas — gratis.</p>
-
-    <!-- TODO backend: endpoint przyjmujący zapis, walidacja serwerowa,
-         mail z linkiem potwierdzającym (double opt-in). -->
-    <form method="post" action="/zapis">
-
-      <p class="pole-email">
-        <label for="email">Twój e-mail</label>
-        <input type="email" id="email" name="email" required
-               autocomplete="email" inputmode="email"
-               placeholder="imie@przyklad.pl">
-      </p>
-
-      <!-- honeypot: pole niewidoczne dla ludzi, boty je wypełniają -->
-      <p hidden aria-hidden="true">
-        <label for="www">Zostaw to pole puste</label>
-        <input type="text" id="www" name="www" tabindex="-1" autocomplete="off">
-      </p>
-
-      <p class="zgoda">
-        <input type="checkbox" id="zgoda" name="zgoda">
-        <label for="zgoda">Chcę otrzymywać na podany adres e-mail informacje
-        marketingowe od <svg class="logo-inline" viewBox="0 0 1080 413" role="img" aria-label="ruch"><use href="#znak-ruch"/></svg>
-        [pełna nazwa i adres administratora — do uzupełnienia].
-        Zgodę mogę wycofać w każdej chwili — link do wypisu jest w każdej wiadomości.</label>
-      </p>
-
-      <p class="blad" id="blad-formularza" role="alert" hidden></p>
-
-      <button type="submit">CHCĘ KARTĘ</button>
-
-      <!-- ścieżka bez zgody marketingowej: karta bez nabitych pieczątek -->
-      <button type="submit" class="wtorny" name="tryb" value="bez-newslettera">
-        chcę kartę bez newslettera — bez nabitych pieczątek
-      </button>
-
-    </form>
-
-    <!-- stan sukcesu — podmienia formularz po wysłaniu (JS); karta jak w koncepcie z pieczątkami -->
-    <section class="sukces" hidden>
+    <!-- TODO backend: ta strona ma być otwierana z tokenem z maila
+         (?token=...). Backend weryfikuje token, dopiero wtedy wydaje kartę
+         i podpisane linki do portfeli. Wariant karty (5/6 albo 0/6 bez
+         newslettera) też przychodzi z backendu. Poniżej wariant 5/6. -->
+    <section class="sukces">
       <p class="karta-etykieta"><svg class="logo-inline" viewBox="0 0 1080 413" role="img" aria-label="ruch"><use href="#znak-ruch"/></svg> — karta lojalnościowa</p>
       <p class="licznik" aria-hidden="true"><span class="licznik-nabite">5</span>/6</p>
       <div class="pieczatki" role="img" aria-label="5 z 6 pieczątek już nabitych, szósta kawa gratis">
@@ -80,56 +39,26 @@
         <span class="pieczatka pusta"></span>
       </div>
       <p class="gratis">szósta — gratis</p>
-      <h2 class="sukces-naglowek" tabindex="-1">Sprawdź skrzynkę!</h2>
-      <p class="sukces-tekst">Wysłaliśmy link na <strong class="sukces-email"></strong>.
-      Kliknij go, a karta z 5 nabitymi pieczątkami trafi do portfela w telefonie
-      (Apple Wallet / Google Wallet).</p>
-    </section>
 
-    <div class="pas-naklejki pas-1" aria-hidden="true">
-      <img src="assets/naklejka-standstill.svg" alt="" loading="lazy" class="naklejka n-standstill">
-    </div>
+      <h1 class="sukces-naglowek">Adres potwierdzony. Dodaj kartę do portfela.</h1>
 
-    <div class="motywy" role="group" aria-label="Kolor strony">
-      <button type="button" class="motyw" data-motyw="jasny" aria-label="Jasny"></button>
-      <button type="button" class="motyw" data-motyw="ciemny" aria-label="Ciemnobrązowy"></button>
-      <button type="button" class="motyw" data-motyw="pomaranczowy" aria-label="Pomarańczowy"></button>
-    </div>
+      <div class="wallet-przyciski">
+        <!-- TODO backend: podpisany .pkpass z serwera -->
+        <a class="wallet wallet-apple" href="#" aria-disabled="true">Apple Wallet</a>
+        <!-- TODO backend: link zapisu Google Wallet podpisany JWT -->
+        <a class="wallet wallet-google" href="#" aria-disabled="true">Google Wallet</a>
+      </div>
 
-    <hr class="kreska">
-
-    <section class="o-marce">
-      <p><svg class="logo-inline" viewBox="0 0 1080 413" role="img" aria-label="ruch"><use href="#znak-ruch"/></svg>
-      to specialty coffee na co dzień. Dobra kawa w dobrej cenie —
-      na mieście, codziennie, w Twoim tempie.
-      Stand still? Nein, danke. Make your everyday!</p>
+      <p class="sukces-tekst">Karta wskoczy do telefonu i będzie czekać na otwarcie.
+      Pieczątki dobijemy przy kasie.</p>
     </section>
 
     <hr class="kreska">
 
     <footer>
-      <p class="social-etykieta">Instagram</p>
-      <!-- handle do weryfikacji u klienta -->
-      <p><a href="https://www.instagram.com/ruch.coffee/">@ruch.coffee</a></p>
-      <p class="prywatnosc"><a href="prywatnosc.html">Polityka prywatności</a></p>
+      <p><a href="index.html">← wróć na stronę główną</a></p>
     </footer>
-
-    <div class="pas-naklejki pas-2" aria-hidden="true">
-      <img src="assets/naklejka-mye-tag.svg" alt="" loading="lazy" class="naklejka n-mye">
-      <img src="assets/naklejka-routine.svg" alt="" loading="lazy" class="naklejka n-routine">
-    </div>
   </main>
-
-  <!-- naklejki w bocznych pasach — tylko desktop, ładowane przez CSS (mobile ich nie pobiera) -->
-  <div class="boki" aria-hidden="true">
-    <span class="bok bok-1"></span>
-    <span class="bok bok-2"></span>
-    <span class="bok bok-3"></span>
-    <span class="bok bok-4"></span>
-    <span class="bok bok-5"></span>
-    <span class="bok bok-6"></span>
-    <span class="bok bok-7"></span>
-  </div>
 
 </body>
 </html>

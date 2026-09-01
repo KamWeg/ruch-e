@@ -44,7 +44,7 @@
 :root[data-motyw='pomaranczowy'] {
   --tlo: #EC4A24;
   --ink: #241610;
-  --znak: #241610;
+  --znak: #E9E4DD; /* beżowy logotyp na pomarańczu */
   --cta-tlo: #241610;
   --cta-tekst: #F6F3EE;
   --cta-hover-tlo: #F7F7F5;
@@ -215,6 +215,161 @@ button[type='submit']:active { translate: 0 1px; }
   margin-top: 12px;
 }
 
+.blad {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--cta-tlo);
+  margin-top: 12px;
+}
+
+button[type='submit'][disabled] {
+  cursor: default;
+  opacity: 0.7;
+}
+
+/* wtórna ścieżka: tekstowy, celowo cichy */
+button.wtorny {
+  height: auto;
+  margin-top: 10px;
+  padding: 8px 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 13px;
+  letter-spacing: 0;
+  border-radius: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+button.wtorny:hover,
+button.wtorny:focus-visible {
+  background: transparent;
+  color: var(--ink);
+  text-decoration-thickness: 2px;
+}
+
+/* wariant sukcesu bez zgody: czysta karta, zero nabitych */
+.sukces.bez-pieczatek .pieczatka {
+  background: transparent;
+  border: 2px dashed var(--ink);
+  rotate: 0deg;
+  animation: none !important;
+}
+
+.sukces.bez-pieczatek .pieczatka svg { display: none; }
+
+/* ── stan sukcesu: karta z nabijającymi się pieczątkami ─────── */
+
+.karta-etykieta {
+  font-family: var(--mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.karta-etykieta .logo-inline { text-transform: none; }
+
+.licznik {
+  font-size: 56px;
+  line-height: 1.1;
+  margin-top: 4px;
+}
+
+.licznik-nabite { color: var(--cta-tlo); }
+
+.pieczatki {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.pieczatka {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--cta-tlo);
+  rotate: -4deg;
+}
+
+.pieczatka svg {
+  width: 30px;
+  height: 12px;
+  color: var(--cta-tekst);
+}
+
+.pieczatka.pusta {
+  background: transparent;
+  border: 2px dashed var(--ink);
+  rotate: 0deg;
+}
+
+/* nabijanie po kolei — na wyraźne życzenie Kamila (PROMPT mówił: bez animacji) */
+@keyframes nabij {
+  from { scale: 1.7; opacity: 0; }
+  60%  { scale: 0.9; opacity: 1; }
+  to   { scale: 1; opacity: 1; }
+}
+
+.sukces:not([hidden]) .pieczatka:not(.pusta) { animation: nabij 0.3s backwards; }
+.sukces:not([hidden]) .p-1 { animation-delay: 0.10s; }
+.sukces:not([hidden]) .p-2 { animation-delay: 0.28s; }
+.sukces:not([hidden]) .p-3 { animation-delay: 0.46s; }
+.sukces:not([hidden]) .p-4 { animation-delay: 0.64s; }
+.sukces:not([hidden]) .p-5 { animation-delay: 0.82s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sukces .pieczatka { animation: none !important; }
+}
+
+.gratis {
+  font-family: var(--mono);
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.sukces-naglowek {
+  font-size: clamp(20px, 5.8vw, 26px);
+  text-transform: uppercase;
+  margin-top: 18px;
+}
+
+.sukces-naglowek:focus { outline: none; }
+
+.sukces-tekst {
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.55;
+  margin-top: 8px;
+}
+
+/* ── potwierdzenie.html: przyciski portfeli ─────────────────── */
+
+.wallet-przyciski {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.wallet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  border-radius: 50%;
+  font-family: var(--mono);
+  font-size: 17px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.wallet-apple { background: var(--ink); color: var(--tlo); }
+.wallet-google { background: var(--cta-tlo); color: var(--cta-tekst); }
+
 /* ── logo w miejscu słowa „ruch" w tekście ──────────────────── */
 
 .logo-inline {
@@ -268,6 +423,9 @@ footer {
 }
 
 footer a { font-size: 15px; }
+
+footer .prywatnosc { margin-top: 10px; }
+footer .prywatnosc a { font-size: 12px; }
 
 /* ── naklejki: pasy w przerwach, poza tekstem ───────────────── */
 
