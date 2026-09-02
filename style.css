@@ -21,7 +21,14 @@
   --ink:    #241610;
   --krem:   #E9E4DD;
   --orange: #EC4A24;
-  --znak:   #EC4A24; /* kolor dużego logotypu w tle */
+  --znak:   #EC4A24;
+  --pieczatka-pole: #d9d9d9;
+  --pieczatka-tusz: #241610;
+  --pieczatka-bazgrol: #F7F7F5;
+  --wlepa1-tlo: #EE4D2A;
+  --wlepa1-tekst: #241610;
+  --wlepa2-tlo: #281913;
+  --wlepa2-tekst: #F6F3EE;
   --cta-tlo: #EC4A24;
   --cta-tekst: #241610;
   --cta-hover-tlo: #241610;
@@ -34,6 +41,8 @@
 
 :root[data-motyw='ciemny'] {
   --tlo: #241610;
+  --wlepa2-tlo: #E9E4DD;   /* ciemna wlepa robi się beżowa */
+  --wlepa2-tekst: #241610;
   --ink: #F6F3EE;
   --cta-tlo: #EC4A24;
   --cta-tekst: #241610;
@@ -43,6 +52,8 @@
 
 :root[data-motyw='pomaranczowy'] {
   --tlo: #EC4A24;
+  --wlepa1-tlo: #F7F7F5;   /* pomarańczowa wlepa robi się jasna */
+  --wlepa1-tekst: #EC4A24;
   --ink: #241610;
   --znak: #E9E4DD; /* beżowy logotyp na pomarańczu */
   --cta-tlo: #241610;
@@ -234,7 +245,7 @@ button[type='submit'][disabled] {
   border-radius: 20px;
   background: #EC4A24; /* karta to fizyczny obiekt — nie zmienia się z motywem */
   overflow: hidden;
-  rotate: -3.5deg; /* leży pod kątem, jak na card.ruch.coffee */
+  rotate: -5deg; /* leży pod wyraźnym kątem, jak na card.ruch.coffee */
 }
 
 .karta-znak {
@@ -277,7 +288,7 @@ button[type='submit'][disabled] {
   width: 13%;
   aspect-ratio: 1;
   border: 0;
-  background: #d9d9d9; /* szare pole — zawsze widoczne pod stemplem */
+  background: var(--pieczatka-pole); /* pole — zawsze widoczne pod stemplem */
   border-radius: 48% 52% 44% 56% / 55% 46% 54% 45%; /* nieregularne, jak rysowane ręką */
 }
 
@@ -294,7 +305,7 @@ button[type='submit'][disabled] {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: #241610;
+  background: var(--pieczatka-tusz);
   opacity: 0;
 }
 
@@ -302,7 +313,7 @@ button[type='submit'][disabled] {
   position: relative;
   width: 62%;
   height: auto;
-  color: #F7F7F5;
+  color: var(--pieczatka-bazgrol);
   visibility: hidden; /* bazgroł pojawia się dopiero po nabiciu */
 }
 
@@ -353,7 +364,14 @@ button[type='submit'][disabled] {
   margin-top: 12px;
 }
 
-.badge { display: block; }
+.badge {
+  display: block;
+  background: #1A1614; /* tło przycisku CSS-em, żeby motyw mógł je zmienić */
+  border-radius: 20px;
+}
+
+/* na brązowym motywie czarne przyciski by zginęły — robią się pomarańczowe */
+:root[data-motyw='ciemny'] .badge { background: #EC4A24; }
 
 .badge picture { display: block; }
 
@@ -482,15 +500,19 @@ body.js .motywy {
   position: absolute;
   width: 170px;
   height: 46px;
-  border: 0; /* bez obrysu — aktywny motyw zlewa się z tłem */
+  border: 0; /* bez obrysu — aktywny dostaje stroke */
   border-radius: 50%;
   cursor: pointer;
   padding: 0;
+  font-family: var(--mono);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
-.motyw[data-motyw='jasny']        { background: #F7F7F5; left: -28px; top: 40px; rotate: -7deg; }
-.motyw[data-motyw='ciemny']       { background: #241610; left: 40%;   top: 8px;  rotate: 5deg; }
-.motyw[data-motyw='pomaranczowy'] { background: #EC4A24; right: -30px; top: 58px; rotate: -4deg; }
+.motyw[data-motyw='jasny']        { background: #F7F7F5; color: #241610; left: -28px; top: 40px; rotate: -7deg; }
+.motyw[data-motyw='ciemny']       { background: #241610; color: #F6F3EE; left: 40%;   top: 8px;  rotate: 5deg; }
+.motyw[data-motyw='pomaranczowy'] { background: #EC4A24; color: #F7F7F5; right: -30px; top: 58px; rotate: -4deg; }
 
 /* aktywny kolor dostaje stroke — każdy inny */
 .motyw[aria-pressed='true'][data-motyw='jasny']        { border: 3px solid #241610; }
@@ -541,7 +563,7 @@ footer .prywatnosc a { font-size: 12px; }
 .pas-naklejki { position: relative; }
 .pas-2 { height: 150px; margin-top: 16px; }
 
-.naklejka { position: absolute; }
+.naklejka { position: absolute; height: auto; }
 
 .n-mye       { left: -40px;  top: 12px; width: 190px; rotate: 5deg; }
 .n-routine   { right: -30px; top: 40px; width: 200px; rotate: -6deg; }
