@@ -481,6 +481,11 @@ body.js .motywy {
 .motyw[data-motyw='ciemny']       { background: #241610; left: 40%;   top: 8px;  rotate: 5deg; }
 .motyw[data-motyw='pomaranczowy'] { background: #EC4A24; right: -30px; top: 58px; rotate: -4deg; }
 
+/* aktywny kolor dostaje stroke — każdy inny */
+.motyw[aria-pressed='true'][data-motyw='jasny']        { border: 3px solid #241610; }
+.motyw[aria-pressed='true'][data-motyw='ciemny']       { border: 3px solid #EC4A24; }
+.motyw[aria-pressed='true'][data-motyw='pomaranczowy'] { border: 3px solid #F7F7F5; }
+
 /* ── pod linią zgięcia ──────────────────────────────────────── */
 
 /* mniej istotne — celowo pomniejszone */
