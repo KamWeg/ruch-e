@@ -240,8 +240,8 @@ button[type='submit'][disabled] {
   aspect-ratio: 8 / 5;
   width: 112%; /* większa — wystaje poza krawędzie ekranu */
   margin-left: -6%;
-  margin-top: 24px;
-  margin-bottom: 8px;
+  margin-top: 26px;
+  margin-bottom: 30px; /* obrócone rogi nie nachodzą na przyciski */
   border-radius: 20px;
   background: #EC4A24; /* karta to fizyczny obiekt — nie zmienia się z motywem */
   overflow: hidden;

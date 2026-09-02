@@ -43,8 +43,6 @@ function submitSignup(email, consent) {
       // TODO backend: Apple — pobranie .pkpass (ta sama karta, iOS pokaże
       // arkusz i wróci sam); Google — link zapisu w NOWEJ karcie
       // (target=_blank), bo Google nie wraca automatycznie.
-      var fajka = document.querySelector('.krok-fajka');
-      if (fajka) fajka.hidden = false;
       // karta w portfelu startuje pusta — pieczątki znikają,
       // wrócą z animacją dopiero po zapisie do newslettera
       var karta = document.getElementById('karta');
