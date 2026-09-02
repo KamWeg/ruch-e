@@ -122,6 +122,7 @@ h1 {
   font-size: 14px;
   line-height: 1.5;
   margin-top: 8px;
+  margin-bottom: 44px; /* oddech przed sekcją o marce */
 }
 
 .oferta strong { font-weight: 700; }
@@ -458,24 +459,27 @@ body.js .krok-2:not(.otwarty) { display: none; }
 
 .motywy { display: none; } /* bez JS nie ma czego przełączać */
 
+/* elipsy rozrzucone na samym dole jak naklejki */
 body.js .motywy {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 12px;
+  display: block;
+  position: relative;
+  height: 120px;
+  margin-top: 10px;
 }
 
 .motyw {
-  flex: 1; /* trzy elipsy w jednym rzędzie, każda rozciągnięta */
-  height: 26px;
+  position: absolute;
+  width: 170px;
+  height: 46px;
   border: 0; /* bez obrysu — aktywny motyw zlewa się z tłem */
-  border-radius: 50%; /* elipsa rozciągnięta na całą szerokość */
+  border-radius: 50%;
   cursor: pointer;
   padding: 0;
 }
 
-.motyw[data-motyw='jasny']        { background: #F7F7F5; }
-.motyw[data-motyw='ciemny']       { background: #241610; }
-.motyw[data-motyw='pomaranczowy'] { background: #EC4A24; }
+.motyw[data-motyw='jasny']        { background: #F7F7F5; left: -28px; top: 40px; rotate: -7deg; }
+.motyw[data-motyw='ciemny']       { background: #241610; left: 40%;   top: 8px;  rotate: 5deg; }
+.motyw[data-motyw='pomaranczowy'] { background: #EC4A24; right: -30px; top: 58px; rotate: -4deg; }
 
 /* ── pod linią zgięcia ──────────────────────────────────────── */
 
