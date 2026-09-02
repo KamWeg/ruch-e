@@ -34,6 +34,12 @@ Logotyp zastępuje słowo „ruch" wszędzie, także w zdaniach (inline `<use>`,
 `role="img"`, `aria-label="ruch"`). Opis marki przepisany w tonie cukier.works
 — do akceptacji klienta (bez „demokratyzujemy", bez „kosmosu").
 
+**UPROSZCZENIE (feedback klienta, benchmark card.ruch.coffee):** strona ma być
+„jeszcze nudniejsza": bez dużego logotypu w tle, copy POD kartą (karta jest
+bohaterem pierwszego ekranu), bez wlep w hero i po bokach (zostały tylko dwie
+na samym dole), wszystko z hero widoczne na pierwszej odsłonie 375×667.
+Stan sprzed uproszczenia: tag `v1-bogata`.
+
 Dodatki z sesji 1 (na polecenie Kamila, ponad limity PROMPT):
 - **Motywy kolorów** jak w wersji A (ruch-a.vercel.app): jasny / ciemny /
   pomarańczowy, przełączane trzema elipsami nad kreską przed opisem;

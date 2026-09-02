@@ -95,27 +95,8 @@ a { color: var(--ink); }
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  font-size: clamp(26px, 7vw, 32px);
+  font-size: 20px;
   line-height: 1.1;
-  position: relative;
-  z-index: 1; /* (S26) nad logotypem */
-}
-
-/* ── duży logotyp w tle, wylany za krawędzie ────────────────── */
-
-.blob {
-  width: min(114vw, 780px);
-  margin-left: calc(50% - min(57vw, 390px));
-  margin-top: -34px; /* znak wchodzi pod (S26) */
-  margin-bottom: -60px; /* kreska i nagłówek podchodzą pod znak, jak w menu */
-  pointer-events: none;
-}
-
-.blob svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  color: var(--znak);
 }
 
 /* ── przerywane kreski jak na paragonie ─────────────────────── */
@@ -130,17 +111,17 @@ a { color: var(--ink); }
 
 h1 {
   text-transform: uppercase;
-  font-size: clamp(24px, 7vw, 32px);
-  line-height: 1.1;
+  font-size: clamp(18px, 5vw, 24px);
+  line-height: 1.15;
   letter-spacing: 0.01em;
-  margin-top: 6px;
+  margin-top: 20px;
 }
 
 .oferta {
   font-family: var(--mono);
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.5;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .oferta strong { font-weight: 700; }
@@ -538,87 +519,10 @@ footer .prywatnosc a { font-size: 12px; }
 /* ── naklejki: pasy w przerwach, poza tekstem ───────────────── */
 
 .pas-naklejki { position: relative; }
-.pas-1 { height: 150px; margin-top: 34px; }
 .pas-2 { height: 150px; margin-top: 16px; }
 
 .naklejka { position: absolute; }
 
-.n-standstill { right: -44px; top: -4px; width: 180px; rotate: -7deg; }
-.n-krafth    { left: -36px; top: 26px; width: 170px; rotate: 6deg; }
 .n-mye       { left: -40px;  top: 12px; width: 190px; rotate: 5deg; }
 .n-routine   { right: -30px; top: 40px; width: 200px; rotate: -6deg; }
 
-/* ── naklejki w bocznych pasach — tylko desktop ─────────────── */
-
-.boki { display: none; }
-
-@media (min-width: 1080px) {
-  body { position: relative; }
-
-  .boki { display: block; }
-
-  .bok {
-    position: absolute;
-    background: center / contain no-repeat;
-    pointer-events: none;
-  }
-
-  /* logotyp w tle zajmuje pas y ≈ 0–330 na szerokości kolumny ±390px —
-     boczne naklejki trzymają się poza nim */
-
-  .bok-7 { /* szara EVERYDAY SPECIALITY z bazgrołem, lewy górny róg, przycięta */
-    background-image: url('assets/naklejka-everyday-scribble.svg');
-    left: calc(50% - 640px);
-    top: 40px;
-    width: 230px; height: 166px;
-    rotate: -6deg;
-  }
-
-  .bok-1 { /* biały blob MYE, lewy pas pod logotypem */
-    background-image: url('assets/naklejka-mye-blob.svg');
-    left: calc(50% - 470px);
-    top: 370px;
-    width: 190px; height: 132px;
-    rotate: 8deg;
-  }
-
-  .bok-2 { /* beżowa Make Your RUCH COFFEE Everyday, lewy pas */
-    background-image: url('assets/naklejka-mye-coffee.svg');
-    left: calc(50% - 505px);
-    top: 700px;
-    width: 220px; height: 151px;
-    rotate: -7deg;
-  }
-
-  .bok-5 { /* biała Make Your Everyday SPECIALITY, lewy dół */
-    background-image: url('assets/naklejka-mye-spec.svg');
-    left: calc(50% - 490px);
-    top: 980px;
-    width: 200px; height: 125px;
-    rotate: 9deg;
-  }
-
-  .bok-3 { /* pomarańczowy owal EVERYDAY SPECIALITY, prawy pas */
-    background-image: url('assets/naklejka-everyday.svg');
-    left: calc(50% + 290px);
-    top: 360px;
-    width: 210px; height: 103px;
-    rotate: 6deg;
-  }
-
-  .bok-6 { /* kraftowa metka Make Your Everyday, prawy środek */
-    background-image: url('assets/naklejka-mye-krafth.svg');
-    left: calc(50% + 320px);
-    top: 620px;
-    width: 170px; height: 106px;
-    rotate: 7deg;
-  }
-
-  .bok-4 { /* biała MYE Make Your Everyday, prawy dół */
-    background-image: url('assets/naklejka-mye-stack.svg');
-    left: calc(50% + 300px);
-    top: 850px;
-    width: 225px; height: 148px;
-    rotate: -8deg;
-  }
-}
