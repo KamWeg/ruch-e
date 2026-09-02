@@ -227,10 +227,11 @@ button[type='submit'][disabled] {
 .karta {
   position: relative;
   aspect-ratio: 8 / 5;
-  margin-top: 12px;
+  margin-top: 16px;
   border-radius: 20px;
   background: #EC4A24; /* karta to fizyczny obiekt — nie zmienia się z motywem */
   overflow: hidden;
+  rotate: -2deg; /* leży pod lekkim kątem, jak na card.ruch.coffee */
 }
 
 .karta-znak {
@@ -272,17 +273,24 @@ button[type='submit'][disabled] {
   justify-content: center;
   width: 13%;
   aspect-ratio: 1;
-  border-radius: 50%;
   border: 0;
   background: #d9d9d9; /* szare pole — zawsze widoczne pod stemplem */
+  border-radius: 48% 52% 44% 56% / 55% 46% 54% 45%; /* nieregularne, jak rysowane ręką */
 }
+
+/* każde kółko trochę inne */
+.pieczatka.p-2 { border-radius: 55% 45% 52% 48% / 46% 55% 45% 54%; }
+.pieczatka.p-3 { border-radius: 45% 55% 47% 53% / 52% 44% 56% 48%; }
+.pieczatka.p-4 { border-radius: 52% 48% 56% 44% / 45% 53% 47% 55%; }
+.pieczatka.p-5 { border-radius: 47% 53% 45% 55% / 54% 48% 52% 46%; }
+.pieczatka.pusta { border-radius: 53% 47% 55% 45% / 47% 54% 46% 53%; }
 
 /* ciemny stempel to osobna warstwa nad szarym polem */
 .pieczatka::before {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 50%;
+  border-radius: inherit;
   background: #241610;
   opacity: 0;
 }
